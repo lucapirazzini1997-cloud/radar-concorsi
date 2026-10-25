@@ -1,0 +1,17 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Ogni utente legge e scrive solo i propri dati
+    match /users/{uid} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+      match /follows/{fid} {
+        allow read, write: if request.auth != null && request.auth.uid == uid;
+      }
+    }
+    // Bandi trovati dallo script giornaliero: lettura per utenti registrati, scrittura solo dallo script
+    match /feed/{id} {
+      allow read: if request.auth != null;
+      allow write: if false;
+    }
+  }
+}

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Radar Concorsi</title>
+  <meta name="description" content="Segui i concorsi di radiodiagnostica e ricevi un riepilogo giornaliero delle novità.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand"><span class="dot"></span> Radar Concorsi</div>
+    <div id="userBox"></div>
+  </header>
+
+  <main>
+    <section id="landing" class="card hidden">
+      <h1>Segui i concorsi di radiodiagnostica</h1>
+      <p>Aggiungi i concorsi a cui hai partecipato o fatto domanda: ogni mattina Radar Concorsi controlla le pagine dei bandi (graduatorie, date delle prove, avvisi) e ti manda un'email solo se c'è qualcosa di nuovo. In più trovi i nuovi bandi di radiodiagnostica pubblicati su inPA.</p>
+      <button id="loginBtn" class="primary">Accedi con Google</button>
+    </section>
+
+    <div id="app" class="hidden">
+      <section class="card">
+        <div class="row between">
+          <h2>I miei concorsi</h2>
+          <label class="switch"><input type="checkbox" id="emailToggle"> Email giornaliera</label>
+        </div>
+        <form id="addForm" class="grid">
+          <input id="fTitle" placeholder="Titolo (es. Dirigente medico radiodiagnostica)" required>
+          <input id="fEnte" placeholder="Ente (es. AUSL Romagna)">
+          <input id="fUrl" type="url" placeholder="Link alla pagina del concorso (dove escono graduatorie/date)" required>
+          <select id="fStato">
+            <option>Domanda inviata</option>
+            <option>Prova scritta sostenuta</option>
+            <option>Prova orale sostenuta</option>
+            <option>In graduatoria</option>
+            <option>Da valutare</option>
+          </select>
+          <button class="primary" type="submit">Aggiungi</button>
+        </form>
+        <ul id="followList" class="list"></ul>
+      </section>
+
+      <section class="card">
+        <h2>Nuovi bandi di radiodiagnostica</h2>
+        <p class="muted">Fonte: portale inPA, aggiornato ogni giorno.</p>
+        <ul id="feedList" class="list"></ul>
+      </section>
+    </div>
+  </main>
+
+  <footer class="muted">Radar Concorsi · strumento non ufficiale, verifica sempre sul sito dell'ente.</footer>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
